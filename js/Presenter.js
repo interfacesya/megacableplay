@@ -13,6 +13,7 @@ This class shows examples for each one.
 
 var Presenter = {
 
+
     defaultPresenter: function(xml) {
 
         if(this.loadingIndicatorVisible) {
@@ -61,6 +62,11 @@ var Presenter = {
         var doc = Presenter.parser.parseFromString(resource, "application/xml");
         return doc;
     },
+    listarStack:function()
+    {
+        var stack=navigationDocument.documents();
+        return stack;
+    },
     removeDocument:function(xml)
     {
         navigationDocument.removeDocument(xml);
@@ -88,6 +94,7 @@ var Presenter = {
     },
     load: function(event)
     {
+        
         var self = this,
             ele          = event.target,
             templateURL  = ele.getAttribute("template"),
@@ -96,33 +103,20 @@ var Presenter = {
             nodo        =  ele.getAttribute("id"),
             videoURL    =  ele.getAttribute("videoURL");
 
+        var baseURL= "http://localhost:8000/templates/";
         /*
         Check if the selected element has a 'template' attribute. If it does then we begin
         the process to present the template to the user.
         */
         if (templateURL) {
-            console.log(templateURL);
-            tmp = templateURL.split("|");
-            templateURL=tmp[0];
-            contenido=tmp[1];
-            
             //self.showLoadingIndicator(presentation);
-            
-            resourceLoader.loadResource(templateURL,function(resource) {
-                    if (resource) {
-                       var doc = self.makeDocument(resource);
-                        
-                        doc.addEventListener("select", self.load.bind(self));
-                        doc.addEventListener("highlight", self.load.bind(self));
-                        if (self[presentation] instanceof Function) {
-                            self[presentation].call(self, doc, ele);
-                        } else {
-                            self.defaultPresenter.call(self, doc);
-                        }
-                    }
-                },contenido
-            );
-            console.log(navigationDocument.documents);
+            if (event.type == "select" && (templateURL== baseURL + "detalleReview.xml.js") && !isNaN(nodo)) {
+                var urlFind = 'http://api.themoviedb.org/3/movie/'+nodo+'?api_key=ff743742b3b6c89feb59dfc138b4c12f';
+                Presenter.jsonRequest({ url: urlFind,
+                    callback: function(err, data) {
+                    Presenter.cargaTemplate("detalleReview.xml.js",data) }
+                });
+            }
         }
         else
         {
@@ -138,9 +132,15 @@ var Presenter = {
             {
                 Presenter.cargaDetalle(nodo)
             }
-            if (event.type == "select" && template == "Info" )
+            if (event.type == "select" && template == "Info" && !isNaN(nodo))
             {
-                Presenter.cargaTemplate("Rating.xml.js",nodo)
+                
+                var urlFind = 'http://api.themoviedb.org/3/movie/'+nodo+'?api_key=ff743742b3b6c89feb59dfc138b4c12f';
+                Presenter.jsonRequest({ url: urlFind,
+                    callback: function(err, data) {
+                    Presenter.cargaTemplate("Rating.xml.js",data)}
+                });
+                
             }
             if (event.type == "select" && template == "Info" && nodo =="urlPlay")
             {
@@ -195,23 +195,12 @@ var Presenter = {
         keyboard.onTextChange = function () {
             console.log("onTextChange "+keyboard.text)
           }
-          
+        console.log("pwd:" +  userValue);
+        
         if ( userValue == "123") {
-            
-            /*var baseURL= "http://localhost:8000/templates/";
-            
-            resourceLoader.loadResource(baseURL + "loginPwd.xml.js",function(resource) {
-                if (resource) {
-                    var doc = Presenter.makeDocument(resource);
-                    Presenter.removeDocument(doc);
-                }
-            },"");*/
-            console.log(navigationDocument.documents);
             Presenter.cargaCatalogo();
         }
     },
-    
-    
     cargaCatalogo:function()
     {
         var urlPopular = 'http://api.themoviedb.org/3/movie/popular?api_key=ff743742b3b6c89feb59dfc138b4c12f';
@@ -226,10 +215,10 @@ var Presenter = {
         var urlFind = 'http://api.themoviedb.org/3/movie/'+indice+'?api_key=ff743742b3b6c89feb59dfc138b4c12f';
         var info;
             Presenter.jsonRequest({ url: urlFind,
-                                        callback: function(err, data) {
-                                        console.log(data);
-                                        Presenter.cargaTemplate("template2.xml.js",data) }
-                                });
+                    callback: function(err, data) {
+                    //console.log(data);
+                    Presenter.cargaTemplate("template2.xml.js",data) }
+            });
                 
     },
     reproduce:function(videoURL)
