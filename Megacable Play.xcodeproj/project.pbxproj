@@ -1,0 +1,498 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C891B951C7F936100B57510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C891B941C7F936100B57510 /* AppDelegate.swift */; };
+		1C891B971C7F936100B57510 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C891B961C7F936100B57510 /* ViewController.swift */; };
+		1C891B9A1C7F936100B57510 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C891B981C7F936100B57510 /* Main.storyboard */; };
+		1C891B9C1C7F936100B57510 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C891B9B1C7F936100B57510 /* Assets.xcassets */; };
+		1C891BA71C7F936100B57510 /* Megacable_PlayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C891BA61C7F936100B57510 /* Megacable_PlayTests.swift */; };
+		1C891BB21C7F936100B57510 /* Megacable_PlayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C891BB11C7F936100B57510 /* Megacable_PlayUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1C891BA31C7F936100B57510 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C891B891C7F936000B57510 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1C891B901C7F936000B57510;
+			remoteInfo = "Megacable Play";
+		};
+		1C891BAE1C7F936100B57510 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C891B891C7F936000B57510 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1C891B901C7F936000B57510;
+			remoteInfo = "Megacable Play";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1C891B911C7F936000B57510 /* Megacable Play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Megacable Play.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C891B941C7F936100B57510 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1C891B961C7F936100B57510 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1C891B991C7F936100B57510 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1C891B9B1C7F936100B57510 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1C891B9D1C7F936100B57510 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C891BA21C7F936100B57510 /* Megacable PlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Megacable PlayTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C891BA61C7F936100B57510 /* Megacable_PlayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Megacable_PlayTests.swift; sourceTree = "<group>"; };
+		1C891BA81C7F936100B57510 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C891BAD1C7F936100B57510 /* Megacable PlayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Megacable PlayUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C891BB11C7F936100B57510 /* Megacable_PlayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Megacable_PlayUITests.swift; sourceTree = "<group>"; };
+		1C891BB31C7F936100B57510 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1C891B8E1C7F936000B57510 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C891B9F1C7F936100B57510 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C891BAA1C7F936100B57510 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C891B881C7F936000B57510 = {
+			isa = PBXGroup;
+			children = (
+				1C891B931C7F936100B57510 /* Megacable Play */,
+				1C891BA51C7F936100B57510 /* Megacable PlayTests */,
+				1C891BB01C7F936100B57510 /* Megacable PlayUITests */,
+				1C891B921C7F936000B57510 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1C891B921C7F936000B57510 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1C891B911C7F936000B57510 /* Megacable Play.app */,
+				1C891BA21C7F936100B57510 /* Megacable PlayTests.xctest */,
+				1C891BAD1C7F936100B57510 /* Megacable PlayUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1C891B931C7F936100B57510 /* Megacable Play */ = {
+			isa = PBXGroup;
+			children = (
+				1C891B941C7F936100B57510 /* AppDelegate.swift */,
+				1C891B961C7F936100B57510 /* ViewController.swift */,
+				1C891B981C7F936100B57510 /* Main.storyboard */,
+				1C891B9B1C7F936100B57510 /* Assets.xcassets */,
+				1C891B9D1C7F936100B57510 /* Info.plist */,
+			);
+			path = "Megacable Play";
+			sourceTree = "<group>";
+		};
+		1C891BA51C7F936100B57510 /* Megacable PlayTests */ = {
+			isa = PBXGroup;
+			children = (
+				1C891BA61C7F936100B57510 /* Megacable_PlayTests.swift */,
+				1C891BA81C7F936100B57510 /* Info.plist */,
+			);
+			path = "Megacable PlayTests";
+			sourceTree = "<group>";
+		};
+		1C891BB01C7F936100B57510 /* Megacable PlayUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1C891BB11C7F936100B57510 /* Megacable_PlayUITests.swift */,
+				1C891BB31C7F936100B57510 /* Info.plist */,
+			);
+			path = "Megacable PlayUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1C891B901C7F936000B57510 /* Megacable Play */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C891BB61C7F936100B57510 /* Build configuration list for PBXNativeTarget "Megacable Play" */;
+			buildPhases = (
+				1C891B8D1C7F936000B57510 /* Sources */,
+				1C891B8E1C7F936000B57510 /* Frameworks */,
+				1C891B8F1C7F936000B57510 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Megacable Play";
+			productName = "Megacable Play";
+			productReference = 1C891B911C7F936000B57510 /* Megacable Play.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1C891BA11C7F936100B57510 /* Megacable PlayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C891BB91C7F936100B57510 /* Build configuration list for PBXNativeTarget "Megacable PlayTests" */;
+			buildPhases = (
+				1C891B9E1C7F936100B57510 /* Sources */,
+				1C891B9F1C7F936100B57510 /* Frameworks */,
+				1C891BA01C7F936100B57510 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1C891BA41C7F936100B57510 /* PBXTargetDependency */,
+			);
+			name = "Megacable PlayTests";
+			productName = "Megacable PlayTests";
+			productReference = 1C891BA21C7F936100B57510 /* Megacable PlayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1C891BAC1C7F936100B57510 /* Megacable PlayUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C891BBC1C7F936100B57510 /* Build configuration list for PBXNativeTarget "Megacable PlayUITests" */;
+			buildPhases = (
+				1C891BA91C7F936100B57510 /* Sources */,
+				1C891BAA1C7F936100B57510 /* Frameworks */,
+				1C891BAB1C7F936100B57510 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1C891BAF1C7F936100B57510 /* PBXTargetDependency */,
+			);
+			name = "Megacable PlayUITests";
+			productName = "Megacable PlayUITests";
+			productReference = 1C891BAD1C7F936100B57510 /* Megacable PlayUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1C891B891C7F936000B57510 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Zabdi Chavez";
+				TargetAttributes = {
+					1C891B901C7F936000B57510 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = K3R6B3933J;
+					};
+					1C891BA11C7F936100B57510 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = K3R6B3933J;
+						TestTargetID = 1C891B901C7F936000B57510;
+					};
+					1C891BAC1C7F936100B57510 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = K3R6B3933J;
+						TestTargetID = 1C891B901C7F936000B57510;
+					};
+				};
+			};
+			buildConfigurationList = 1C891B8C1C7F936000B57510 /* Build configuration list for PBXProject "Megacable Play" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1C891B881C7F936000B57510;
+			productRefGroup = 1C891B921C7F936000B57510 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1C891B901C7F936000B57510 /* Megacable Play */,
+				1C891BA11C7F936100B57510 /* Megacable PlayTests */,
+				1C891BAC1C7F936100B57510 /* Megacable PlayUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1C891B8F1C7F936000B57510 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C891B9C1C7F936100B57510 /* Assets.xcassets in Resources */,
+				1C891B9A1C7F936100B57510 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C891BA01C7F936100B57510 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C891BAB1C7F936100B57510 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1C891B8D1C7F936000B57510 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C891B971C7F936100B57510 /* ViewController.swift in Sources */,
+				1C891B951C7F936100B57510 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C891B9E1C7F936100B57510 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C891BA71C7F936100B57510 /* Megacable_PlayTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C891BA91C7F936100B57510 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C891BB21C7F936100B57510 /* Megacable_PlayUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1C891BA41C7F936100B57510 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1C891B901C7F936000B57510 /* Megacable Play */;
+			targetProxy = 1C891BA31C7F936100B57510 /* PBXContainerItemProxy */;
+		};
+		1C891BAF1C7F936100B57510 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1C891B901C7F936000B57510 /* Megacable Play */;
+			targetProxy = 1C891BAE1C7F936100B57510 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1C891B981C7F936100B57510 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1C891B991C7F936100B57510 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1C891BB41C7F936100B57510 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = appletvos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		1C891BB51C7F936100B57510 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1C891BB71C7F936100B57510 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "Megacable Play/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "zce-player.Megacable-Play";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1C891BB81C7F936100B57510 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "Megacable Play/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "zce-player.Megacable-Play";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1C891BBA1C7F936100B57510 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Megacable PlayTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "zce-player.Megacable-PlayTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Megacable Play.app/Megacable Play";
+			};
+			name = Debug;
+		};
+		1C891BBB1C7F936100B57510 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Megacable PlayTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "zce-player.Megacable-PlayTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Megacable Play.app/Megacable Play";
+			};
+			name = Release;
+		};
+		1C891BBD1C7F936100B57510 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Megacable PlayUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "zce-player.Megacable-PlayUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Megacable Play";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		1C891BBE1C7F936100B57510 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Megacable PlayUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "zce-player.Megacable-PlayUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Megacable Play";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1C891B8C1C7F936000B57510 /* Build configuration list for PBXProject "Megacable Play" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C891BB41C7F936100B57510 /* Debug */,
+				1C891BB51C7F936100B57510 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C891BB61C7F936100B57510 /* Build configuration list for PBXNativeTarget "Megacable Play" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C891BB71C7F936100B57510 /* Debug */,
+				1C891BB81C7F936100B57510 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1C891BB91C7F936100B57510 /* Build configuration list for PBXNativeTarget "Megacable PlayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C891BBA1C7F936100B57510 /* Debug */,
+				1C891BBB1C7F936100B57510 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1C891BBC1C7F936100B57510 /* Build configuration list for PBXNativeTarget "Megacable PlayUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C891BBD1C7F936100B57510 /* Debug */,
+				1C891BBE1C7F936100B57510 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1C891B891C7F936000B57510 /* Project object */;
+}
