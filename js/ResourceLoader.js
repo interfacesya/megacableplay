@@ -27,7 +27,7 @@ function ResourceLoader(baseurl) {
  * @param {String} resource - The URL to a JavaScript file
  * @param {Function} callback - The callback to invoke after successfully loading the resource
  */
-ResourceLoader.prototype.loadResource = function(resource, callback,datosTemplate) {
+ResourceLoader.prototype.loadResource = function(resource, callback,datos,data) {
     var self = this;
 
     /**
@@ -42,7 +42,7 @@ ResourceLoader.prototype.loadResource = function(resource, callback,datosTemplat
      */
     evaluateScripts([resource], function(success) {
         if (success) {
-            var resource = Template.call(self,datosTemplate);
+            var resource = Template.call(self,datos,data);
             callback.call(self, resource);
         } else {
             var title = "Resource Loader Error",
