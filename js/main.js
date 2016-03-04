@@ -11,14 +11,14 @@ This is the entry point to the application and handles the initial loading of re
 var resourceLoader;
 
 /**
- * @description The onLaunch callback is invoked after the application JavaScript 
- * has been parsed into a JavaScript context. The handler is passed an object 
+ * @description The onLaunch callback is invoked after the application JavaScript
+ * has been parsed into a JavaScript context. The handler is passed an object
  * that contains options passed in for launch. These options are defined in the
  * swift or objective-c client code. Options can be used to communicate to
- * your JavaScript code that data and as well as state information, like if the 
+ * your JavaScript code that data and as well as state information, like if the
  * the app is being launched in the background.
  *
- * The location attribute is automatically added to the object and represents 
+ * The location attribute is automatically added to the object and represents
  * the URL that was used to retrieve the application JavaScript.
  */
 App.onLaunch = function(options) {
@@ -30,8 +30,8 @@ App.onLaunch = function(options) {
     /**
      * evaluateScripts is responsible for loading the JavaScript files neccessary
      * for you app to run. It can be used at any time in your apps lifecycle.
-     * 
-     * @param - Array of JavaScript URLs  
+     *
+     * @param - Array of JavaScript URLs
      * @param - Function called when the scripts have been evaluated. A boolean is
      * passed that indicates if the scripts were evaluated successfully.
      */
@@ -42,9 +42,10 @@ App.onLaunch = function(options) {
             var index = resourceLoader.loadResource(`${options.BASEURL}templates/login.xml.js`,
                 function(resource) {
                     var doc = Presenter.makeDocument(resource);
-                    doc.addEventListener("select", Presenter.load.bind(Presenter));
-                    doc.addEventListener("highlight",Presenter.load.bind(Presenter));
                     doc.addEventListener("load",Presenter.load.bind(Presenter));
+                    doc.addEventListener("select",Presenter.load.bind(Presenter));
+                    doc.addEventListener("change",Presenter.load.bind(Presenter));
+                    doc.addEventListener("highlight",Presenter.load.bind(Presenter));
                     navigationDocument.pushDocument(doc);
                 });
         } else {
@@ -84,9 +85,9 @@ var createAlert = function(title, description) {
 }
 
 /**
- * @description - an example implementation of search that reacts to the 
+ * @description - an example implementation of search that reacts to the
  * keyboard onTextChange (see Presenter.js) to filter the lockup items based on the search text
- * @param {Document} doc - active xml document 
+ * @param {Document} doc - active xml document
  * @param {String} searchText - current text value of keyboard search input
  */
 var buildResults = function(doc, searchText) {
@@ -138,7 +139,7 @@ var buildResults = function(doc, searchText) {
         lsInput.stringData += `</section></shelf>`;
     }
 
-    //add the new input element to the document by providing the newly created input, the context, 
+    //add the new input element to the document by providing the newly created input, the context,
     //and the operator integer flag (1 to append as child, 2 to overwrite existing children)
     lsParser.parseWithContext(lsInput, doc.getElementsByTagName("collectionList").item(0), 2);
 }
