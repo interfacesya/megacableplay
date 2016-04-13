@@ -3,7 +3,10 @@ var generes="";
 var bloque1="";
 var companias ="";
 var idioma = "";
-
+var favorito ="button-add";
+var leyendaAdd ="Añadir";
+var regex =/\&/;
+var edo=true;
 
   if (data.genres) {
      for (var i=0; i < data.genres.length; i++)
@@ -12,24 +15,71 @@ var idioma = "";
           generes = generes + "<text>" + genero + "</text>" + "\n";
       }
   }
+  var changedObjects = sessionStorage.getItem("changedObjects");
+
+  if (changedObjects !== undefined)
+  {
+     changedObjects = JSON.parse(changedObjects);
+     for (var key in changedObjects)
+     {
+        if(key.toString() === data.id.toString())
+        {
+
+          var obj = changedObjects[key];
+
+          if (obj['favorite'] === 1)
+          {
+            favorito="button-remove";
+            leyendaAdd ="Quitar";
+            edo=false;
+          }
+          else
+          {
+            favorito="button-add";
+            leyendaAdd ="Añadir";
+            edo=true;
+          }
+        }
+     }
+  }
+  else {
+    favorito="button-add";
+    leyendaAdd ="Añadir";
+  }
+
+
    for (var y=0; y < data2.results.length; y++)
    {
-      bloque1  = bloque1 + '<lockup name="detalle" id="' + data2.results[y].id +'">\
+
+      var titulo = data2.results[y].title;
+      titulo = titulo.replace(regex," y ");
+      if (data2.results[y].overview !== undefined)
+      {
+        var overview = data2.results[y].overview;
+        if (overview !== null)
+          overview = overview.replace(regex," y ");
+        else {
+          overview ="";
+        }
+      }
+
+
+       bloque1  = bloque1 + '<lockup name="detalle" id="' + data2.results[y].id +'">\
            <img src="http://image.tmdb.org/t/p/w500' + data2.results[y].poster_path +'" width="250" height="376" />\
-           <title class="showTextOnHighlight">' + data2.results[y].title + '</title>' +
+           <title class="showTextOnHighlight">' + titulo + '</title>' +
            '<overlay>\
                <progressBar value="0.1" />\
            </overlay>\
            <relatedContent>\
                <infoTable>\
                    <header>\
-                       <title>' + data2.results[y].title + '</title>' +
+                       <title>' + titulo + '</title>' +
                    '</header>\
                    <info>\
                        <header>\
-                         <title> ' + data2.results[y].title + '</title>' +
+                         <title> ' + titulo + '</title>' +
                        '</header>\
-                       <description> ' + data2.results[y].overview +'</description>' +
+                       <description> ' + overview +'</description>' +
                    '</info>\
                </infoTable>\
            </relatedContent>\
@@ -38,14 +88,26 @@ var idioma = "";
 
   for (z=0; z < data.production_companies.length;z++)
   {
-     companias = companias + data.production_companies[z].name + " ";
+     var comp = data.production_companies[z].name;
+     comp = comp.replace(regex, " y ");
+     companias = companias +  + comp;
   }
   for (z=0; z < data.spoken_languages.length;z++)
   {
      idioma = idioma + data.spoken_languages[z].name + " ";
   }
 
+  var title0 = data.original_title;
+  title0 = title0.replace(regex," y ");
 
+  var title = data.title;
+  title = title.replace(regex," y ");
+
+  var over =data.overview;
+  over = over.replace(regex," y ");
+
+  var tagline = data.tagline;
+  tagline = tagline.replace(regex," y ");
 
 return `<?xml version="1.0" encoding="UTF-8" ?>
 <document>
@@ -84,11 +146,11 @@ return `<?xml version="1.0" encoding="UTF-8" ?>
                </info>
             </infoList>
           <stack>
-            <title>`+ data.original_title +`</title>
-            <subtitle>`+ data.title +`</subtitle>
-            <text>`+ data.tagline +`</text>
+            <title>`+ title0 +`</title>
+            <subtitle>`+ title +`</subtitle>
+            <text>`+ tagline +`</text>
             <description allowsZooming="true" template="${this.BASEURL}detalleReview.xml.js" presentation="modalDialogPresenter"
-                           name ="detalleReview" id="`+ data.id +`">`+ data.overview +`</description>
+                           name ="detalleReview" id="`+ data.id +`">`+ over +`</description>
             <row>
                 <text>`+ data.release_date +`</text>
                 `+ generes +`
@@ -96,20 +158,16 @@ return `<?xml version="1.0" encoding="UTF-8" ?>
             <row>"\n"</row>
             <row>
                 <buttonLockup id="`+ data.id +`" name="Info">
-                    <badge src="resource://button-rate" class="whiteButton" />
+                <badge src="resource://button-rate" class="whiteButton" />
                     <title>Vote</title>
                 </buttonLockup>
                 <buttonLockup id="urlPlay" name="Info">
                     <badge src="resource://button-play" class="whiteButton" />
                     <title>Play</title>
                 </buttonLockup>
-                <buttonLockup toggle="true" id="`+ data.id +`" name="add">
-                    <badge src="resource://button-add" class="whiteButton" />
-                    <title>Añadir</title>
-                </buttonLockup>
-                <buttonLockup id="buscar" name="buscar">
-                    <badge src="resource://button-cloud" class="whiteButton" />
-                    <title>Buscar</title>
+                <buttonLockup toggle="`+ edo +`" id="`+ data.id +`" name="add">
+                    <badge src="resource://`+ favorito +`" class="whiteButton" />
+                    <title>`+ leyendaAdd + `</title>
                 </buttonLockup>
             </row>
           </stack>

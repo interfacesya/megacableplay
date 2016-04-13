@@ -13,13 +13,13 @@ var totBloque1 =0, totBloque2=0, bloque1 = "", bloque2="";
     }
     return `<?xml version="1.0" encoding="UTF-8" ?>
             <document>
-                <catalogTemplate theme='light'>
+                <catalogTemplate theme='light' name="catalogo.xml.js">
                    <banner>
                       <title font-size='38'>Movies</title>
                    </banner>
                    <list>
                       <section>
-                         <listItemLockup>
+                         <listItemLockup id="catalog" name="catalog">
                             <title font-size='12'>Populares</title>
                             <decorationLabel>`+ totBloque1 +`</decorationLabel>
                             <relatedContent>
@@ -29,12 +29,16 @@ var totBloque1 =0, totBloque2=0, bloque1 = "", bloque2="";
                                </grid>
                             </relatedContent>
                          </listItemLockup>
-                         <listItemLockup>
-                            <title font-size='12'>Mejor Calificadas</title>
-                            <decorationLabel>`+ totBloque2 +`</decorationLabel>
+                         <listItemLockup id="listuser" name="listuser">
+                            <title font-size='12'>Mi Lista</title>
+                            <decorationLabel></decorationLabel>
                             <relatedContent>
                                <grid>
-                                  <section> ` + bloque2 + `
+                                  <section>
+                                      <lockup>
+                                          <img src="" width="250" height="376" />
+                                          <title></title>
+                                       </lockup>
                                   </section>
                                </grid>
                             </relatedContent>

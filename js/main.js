@@ -21,7 +21,8 @@ var resourceLoader;
  * The location attribute is automatically added to the object and represents
  * the URL that was used to retrieve the application JavaScript.
  */
-App.onLaunch = function(options) {
+App.onLaunch = function(options)
+{
     var javascriptFiles = [
         `${options.BASEURL}js/ResourceLoader.js`,
         `${options.BASEURL}js/Presenter.js`
@@ -62,6 +63,7 @@ App.onLaunch = function(options) {
         }
     });
 }
+
 
 
 /**

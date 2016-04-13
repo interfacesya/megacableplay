@@ -1,4 +1,7 @@
-var Template = function () { return `<?xml version="1.0" encoding="UTF-8" ?>
+var Template = function () {
+var baseURL= "http://200.52.193.147:8000/images/";
+
+return `<?xml version="1.0" encoding="UTF-8" ?>
 <document>
     <head>
         <style>
@@ -9,7 +12,7 @@ var Template = function () { return `<?xml version="1.0" encoding="UTF-8" ?>
     </head>
    <formTemplate>
       <banner>
-         <img src="http://10.42.0.12:8000/images/logo.png" width="800" height="400"/>
+         <img src="`+baseURL+`logo.png" width="800" height="400"/>
          <description class="longDescriptionLayout">Contraseña</description>
       </banner>
       <textField id="email" name="loginPwd" secure="true"></textField>

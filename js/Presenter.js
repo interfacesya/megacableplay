@@ -13,15 +13,6 @@ This class shows examples for each one.
 
 var Presenter = {
 
-    getDocument:function(url)
-    {
-       var templateXHR = new XMLHttpRequest();
-       templateXHR.responseType = "document";
-       templateXHR.open("GET", url, true);
-       templateXHR.send();
-       return templateXHR;
-    },
-
     defaultPresenter: function(xml)
     {
 
@@ -86,10 +77,9 @@ var Presenter = {
         navigationDocument.popDocument();
     },
 
-    cargaTemplate:function(template,datos,datos2)
+    cargaTemplate:function(template,datos,datos2,datos3)
     {
-        //var baseURL= "http://localhost:8000/templates/";
-        var baseURL= "http://10.42.0.12:8000/templates/";
+        var baseURL= "http://200.52.193.147:8000/templates/";
 
         resourceLoader = new ResourceLoader(baseURL);
 		    resourceLoader.loadResource( baseURL + template,function(resource)
@@ -108,11 +98,11 @@ var Presenter = {
             doc.addEventListener("select",Presenter.load.bind(Presenter));
             doc.addEventListener("change",Presenter.load.bind(Presenter));
             doc.addEventListener("highlight",Presenter.load.bind(Presenter));
-            doc.addEventListener("onreadystatechange",Presenter.load.bind(Presenter));
+            doc.addEventListener("appear",Presenter.load.bind(Presenter));
             Presenter.pushDocument(doc);
             return doc;
 
-        },datos,datos2);
+        },datos,datos2,datos3);
     },
 
     load: function(event)
@@ -126,6 +116,7 @@ var Presenter = {
         toggle      =  ele.getAttribute("toggle"),
         videoURL    =  ele.getAttribute("videoURL");
 
+        console.log("evento:" + event.type + " forma:" + template + " valor:" + nodo)
         if (templateURL)
         {
             if (event.type == "select" && (template == "detalleReview") && !isNaN(nodo)) {
@@ -146,7 +137,7 @@ var Presenter = {
             {
                 Presenter.validaPwd(ele);
             }
-            if(event.type == "select" && template == "catalogo")
+            if(event.type == "select" && template == "catalogo" && !isNaN(nodo))
             {
                 Presenter.cargaDetalle(nodo)
             }
@@ -164,33 +155,92 @@ var Presenter = {
             }
             if (event.type == "select" && template == "Info" && nodo =="urlPlay")
             {
-                Presenter.reproduce("http://playertest.longtailvideo.com/adaptive/oceans_aes/oceans_aes.m3u8");
+               var url=["http://www.nacentapps.com/m3u8/index.m3u8",
+                    "http://playertest.longtailvideo.com/adaptive/oceans_aes/oceans_aes.m3u8",
+                    "http://content.jwplatform.com/manifests/vM7nH0Kl.m3u8",
+                    "http://sample.vodobox.net/skate_phantom_flex_4k/skate_phantom_flex_4k.m3u8",
+                    "http://vevoplaylist-live.hls.adaptive.level3.net/vevo/ch1/appleman.m3u8",
+                    "http://vevoplaylist-live.hls.adaptive.level3.net/vevo/ch2/appleman.m3u8",
+                    "http://cdn-fms.rbs.com.br/vod/hls_sample1_manifest.m3u8",
+                    "http://cdn-fms.rbs.com.br/hls-vod/sample1_1500kbps.f4v.m3u8",
+                    "http://playertest.longtailvideo.com/adaptive/wowzaid3/playlist.m3u8"];
+
+               var indice=Math.random() * 8;
+               indice =Math.round(indice); 
+               console.log("indice:" + indice);
+
+                Presenter.reproduce(url[indice]);
             }
             if (event.type == "change" && template == "rating")
             {
                 Presenter.obtenRatin(ele);
             }
-            if (event.type == "select" && template == "buscar" && nodo == "buscar")
+            if (event.type == "select" && template == "catalogo" && nodo == "buscar")
             {
-              Presenter.cargaTemplate("busquedas.xml.js","")
+                Presenter.cargaTemplate("busquedas.xml.js","")
             }
             if (event.type == "select" && template == "add" && !isNaN(nodo) && toggle)
             {
                 var isTrueSet = (toggle === 'true');
-                console.log("edo:" + isTrueSet);
+                var obj={};
+                obj['favorite']=0;
+
+                console.log("clic:"+ isTrueSet);
+
+                var changedObjects = sessionStorage.getItem("changedObjects");
+                if (changedObjects === undefined)
+                    changedObjects={};
+                else {
+                   changedObjects = JSON.parse(changedObjects);
+                }
+
                 var badge = ele.getElementsByTagName("badge").item(0);
+                var leyenda =ele.getElementsByTagName("title").item(0);
+
                 if (isTrueSet == true)
                 {
                   badge.setAttribute('src', 'resource://button-remove');
+                  leyenda.textContent='Quitar';
+                  obj['favorite']=1;
+                  ele.setAttribute('toggle', "false");
                 } else {
-                    badge.setAttribute('src', 'resource://button-add');
+                  badge.setAttribute('src', 'resource://button-add');
+                  leyenda.textContent='Añadir';
+                  ele.setAttribute('toggle', "true");
+                  obj['favorite']=0;
                 }
-                ele.setAttribute('toggle', !isTrueSet);
 
-           }
+
+                var eleID = nodo;
+                changedObjects[eleID] = obj;
+                sessionStorage.setItem("changedObjects", JSON.stringify(changedObjects));
+            }
+            if (event.type == "select" && template == "salida")
+            {
+              if ( nodo == "SI")
+              {
+                  console.log("salir de sistema:si");
+                  sessionStorage.removeItem("changedObjects");
+                  sessionStorage.removeItem("activo");
+                  App.reload();
+              }
+              else
+              {
+                  console.log("salir del sistema:no");
+                  Presenter.cargaCatalogo();
+              }
+            }
+
+            if (event.type == "select" && template == "catalogo" && nodo=="config")
+            {
+              Presenter.cargaTemplate("salidaAlerta.xml.js");
+            }
+            if (event.type == "appear" && template == "catalogo")
+            {
+              Presenter.actualizaLista();
+            }
         }
     },
-
     showLoadingIndicator: function(presentation)
     {
        if (!this.loadingIndicator) {
@@ -222,6 +272,7 @@ var Presenter = {
 
         if ( userValue == "abc") {
             console.log("usuario:" +  userValue);
+            sessionStorage.setItem("usuario",userValue);
             Presenter.cargaTemplate("LoginPwd.xml.js")
         }
         else
@@ -243,23 +294,35 @@ var Presenter = {
 
         if ( userValue == "123") {
 
+            sessionStorage.setItem("activo","verdadero");
+            navigationDocument.clear();
             Presenter.cargaCatalogo();
         }
     },
     cargaCatalogo:function()
     {
         var urlPopular = 'http://api.themoviedb.org/3/movie/popular?api_key=ff743742b3b6c89feb59dfc138b4c12f';
-        Presenter.jsonRequest({ url: urlPopular,
-                                    callback: function(err, catalogo) {
-                                    //console.log(catalogo);
-                                    Presenter.cargaTemplate("catalogo.xml.js",catalogo) } });
+        var urlRecient = 'http://api.themoviedb.org/3/movie/now_playing?api_key=ff743742b3b6c89feb59dfc138b4c12f';
+        var urlUpComin = 'http://api.themoviedb.org/3/movie/upcoming?api_key=ff743742b3b6c89feb59dfc138b4c12f';
 
+        Presenter.jsonRequest({ url: urlPopular,
+                            callback: function(err, catalogo) {
+                            console.log(catalogo);
+                            Presenter.jsonRequest({ url: urlRecient,
+                                                callback: function(err, reciente) {
+                                                console.log(reciente);
+                                                Presenter.jsonRequest({ url: urlUpComin,
+                                                                    callback: function(err, porvenir) {
+                                                                    console.log(porvenir);
+                                                                    Presenter.cargaTemplate("stack.xml.js",catalogo,reciente,porvenir) } });
+                                                } });
+                            } });
     },
     cargaDetalle: function (indice)
     {
         console.log(indice);
         var urlFind    = 'http://api.themoviedb.org/3/movie/'+indice +'?api_key=ff743742b3b6c89feb59dfc138b4c12f';
-        var urlSimilar = 'http://api.themoviedb.org/3/movie/'+indice + '/similar?api_key=ff743742b3b6c89feb59dfc138b4c12f';
+        var urlSimilar = 'http://api.themoviedb.org/3/movie/'+indice +'/similar?api_key=ff743742b3b6c89feb59dfc138b4c12f';
 
         Presenter.jsonRequest({ url: urlFind,
                     callback: function(err, data) {
@@ -383,6 +446,84 @@ var Presenter = {
                  //and the operator integer flag (1 to append as child, 2 to overwrite existing children)
                  lsParser.parseWithContext(lsInput, doc.getElementsByTagName("collectionList").item(0), 2);
                 }});
-    }
+    },
+    actualizaLista:function()
+    {
+          console.log("actualiza mi lista");
+          var urlPopular = 'http://api.themoviedb.org/3/movie/popular?api_key=ff743742b3b6c89feb59dfc138b4c12f';
+          var urlRecient = 'http://api.themoviedb.org/3/movie/now_playing?api_key=ff743742b3b6c89feb59dfc138b4c12f';
+          var urlUpComin = 'http://api.themoviedb.org/3/movie/upcoming?api_key=ff743742b3b6c89feb59dfc138b4c12f';
 
+          var resultados ="";
+          var doc = getActiveDocument();
+          var domImplementation = doc.implementation;
+          var lsParser = domImplementation.createLSParser(1, null);
+          var lsInput = domImplementation.createLSInput();
+
+          Presenter.jsonRequest({ url: urlPopular,
+                              callback: function(err, catalogo) {
+                              Presenter.jsonRequest({ url: urlRecient,
+                                                  callback: function(err, reciente) {
+                                                  Presenter.jsonRequest({ url: urlUpComin,
+                                                                      callback: function(err, porvenir) {
+                                                                        var changedObjects = sessionStorage.getItem("changedObjects");
+                                                                        if (changedObjects === undefined) changedObjects = {};
+                                                                        lsInput.stringData ='<header><title>Mi Lista</title></header><section>';
+                                                                        if (Object.keys(changedObjects).length)
+                                                                        {
+                                                                           changedObjects = JSON.parse(changedObjects);
+                                                                           for (var key in changedObjects)
+                                                                           {
+                                                                               var obj = changedObjects[key];
+                                                                               for (var i=0; i < catalogo.results.length; i++)
+                                                                               {
+                                                                                   if ( obj['favorite'] === 1 && key.toString() === catalogo.results[i].id.toString())
+                                                                                   {
+                                                                                       lsInput.stringData +=
+                                                                                       '<lockup id="'+ catalogo.results[i].id +'" name="catalogo">\
+                                                                                           <img src="http://image.tmdb.org/t/p/w500' + catalogo.results[i].poster_path +'" width="250" height="376" />\
+                                                                                           <title>' + catalogo.results[i].title + '</title>\
+                                                                                        </lockup>';
+                                                                                        break;
+                                                                                   }
+                                                                               } // fin for en resultados
+
+                                                                               for (var i=0; i < reciente.results.length; i++)
+                                                                               {
+                                                                                 if ( obj['favorite'] === 1 && key.toString() === reciente.results[i].id.toString())
+                                                                                 {
+                                                                                     lsInput.stringData +=
+                                                                                     '<lockup id="'+ reciente.results[i].id +'" name="catalogo">\
+                                                                                         <img src="http://image.tmdb.org/t/p/w500' + reciente.results[i].poster_path +'" width="250" height="376" />\
+                                                                                         <title>' + reciente.results[i].title + '</title>\
+                                                                                      </lockup>';
+                                                                                      break;
+                                                                                 }
+                                                                               } // fin for en resultados
+
+                                                                               for (var i=0; i < porvenir.results.length; i++)
+                                                                               {
+                                                                                 if ( obj['favorite'] === 1 && key.toString() === porvenir.results[i].id.toString())
+                                                                                 {
+                                                                                     lsInput.stringData +=
+                                                                                     '<lockup id="'+ porvenir.results[i].id +'" name="catalogo">\
+                                                                                         <img src="http://image.tmdb.org/t/p/w500' + porvenir.results[i].poster_path +'" width="250" height="376" />\
+                                                                                         <title>' + porvenir.results[i].title + '</title>\
+                                                                                      </lockup>';
+                                                                                      break;
+                                                                                 }
+                                                                               } // fin for en resultados
+
+                                                                           } // fin for en object
+                                                                         } // fin if object
+                                                                         lsInput.stringData +='</section>';
+                                                                         //console.log(lsInput.stringData);
+                                                                         //console.log(doc.getElementsByTagName("shelf").item(2).innerHTML);
+                                                                         lsParser.parseWithContext(lsInput, doc.getElementsByTagName("shelf").item(4), 2);
+                                                              }});
+                                                  } });
+                              } });
+
+
+    }
 }
